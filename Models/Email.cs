@@ -48,8 +48,19 @@ namespace LerEmail.Models
     {{ CC: {Cc} }},
     {{ DATA: {Data} }},
     {{ HORA: {Hora} }},
-    {{ FROM: {From} }}
+    {{ FROM: {From} }},
+    {{ BODY: {Comeco(Body, 10)}}}
 }}";
+        }
+
+        private string Comeco(string str, int tamanho)
+        {
+            if (string.IsNullOrWhiteSpace(str))
+                return str;
+
+            if (str.Length <= tamanho)
+                return str;
+            return str.Substring(0, tamanho) + "...";
         }
     }
 }

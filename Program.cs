@@ -28,7 +28,8 @@ namespace LerEmail
                 }
                 else
                 {
-                    Console.WriteLine("Uso: LerEmails -p <Pasta para ler os e-mails>");
+                    Console.BackgroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Configure a pasta desejada no arquivo de configuração.");
                     Console.ReadKey();
                 }
             }
