@@ -40,20 +40,26 @@ namespace LerEmail.Models
 
         public override string ToString()
         {
-            return $@"{{
-    {{ ID: {ID} }},
-    {{ SUBJECT: {Subject} }},
-    {{ TO: {To} }},
-    {{ CATEGORIES: {Categories} }},
-    {{ CC: {Cc} }},
-    {{ DATA: {Data} }},
-    {{ HORA: {Hora} }},
-    {{ FROM: {From} }},
-    {{ BODY: {Comeco(Body, 10)}}}
-}}";
+
+            var stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine("{");
+            stringBuilder.AppendLine("{" + ChaveValor(nameof(ID), ID) + "}");
+            stringBuilder.AppendLine("{" + ChaveValor(nameof(Subject).ToUpper(), Subject) + "}");
+            stringBuilder.AppendLine("{" + ChaveValor(nameof(To).ToUpper(), To) + "}");
+            stringBuilder.AppendLine("{" + ChaveValor(nameof(Categories).ToUpper(), Categories) + "}");
+            stringBuilder.AppendLine("{" + ChaveValor(nameof(Cc).ToUpper(), Cc) + "}");
+            stringBuilder.AppendLine("{" + ChaveValor(nameof(Data).ToUpper(), Data) + "}");
+            stringBuilder.AppendLine("{" + ChaveValor(nameof(Hora).ToUpper(), Hora) + "}");
+            stringBuilder.AppendLine("{" + ChaveValor(nameof(From).ToUpper(), From) + "}");
+            stringBuilder.AppendLine("{" + ChaveValor(nameof(Body).ToUpper(), Comeco(Body, 10)) + "}");
+            stringBuilder.AppendLine("}");
+
+            return stringBuilder.ToString();
         }
 
-        private string Comeco(string str, int tamanho)
+        private static string ChaveValor(string chave, object valor) => string.Format("{0}: {1}", chave, valor);
+
+        private static string Comeco(string str, int tamanho)
         {
             if (string.IsNullOrWhiteSpace(str))
                 return str;

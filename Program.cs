@@ -78,7 +78,7 @@ namespace LerEmail
                 var email = db.Emails.Add(new Models.Email());
                 dynamic item = inboxFolder.Items[counter];
                 //item = (Microsoft.Office.Interop.Outlook.MailItem)inboxFolder.Items[counter];
-                Console.WriteLine($"Item: {counter.ToString()}");
+                Console.WriteLine("Item: " + counter.ToString());
 
                 email.Subject = item.Subject;
                 email.Data = (item.SentOn as DateTime?)?.ToString("dd/MM/yyyy");
